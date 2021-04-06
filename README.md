@@ -4,6 +4,8 @@ Game controller using webcam made with computer vision - Python and openCv
 
 ![alt text](.//images/test.gif)
 
+Video Testing avaiable on [https://drive.google.com/file/d/1n6ne1MEXkC8eL9NN0Hjf7Kt4hUbVqlOZ/view?usp=sharing](https://drive.google.com/file/d/1n6ne1MEXkC8eL9NN0Hjf7Kt4hUbVqlOZ/view?usp=sharing)
+
 ## Requirements
 
 - [Python 3](https://www.python.org/)
