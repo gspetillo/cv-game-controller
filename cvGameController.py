@@ -20,11 +20,11 @@ import random
 '''================= Variables and Constants ================='''
 LINE_SIZE = 20
 LINE_THICKNESS = 5
-KEYS = {
-    'A': pynput.keyboard.KeyCode.from_char('A'), 
-    'D': pynput.keyboard.KeyCode.from_char('D'), 
-    'W': pynput.keyboard.KeyCode.from_char('W'), 
-    'S': pynput.keyboard.KeyCode.from_char('S'), 
+keys = {
+    'A': pynput.keyboard.KeyCode.from_char('a'), 
+    'D': pynput.keyboard.KeyCode.from_char('d'), 
+    'W': pynput.keyboard.KeyCode.from_char('w'), 
+    'S': pynput.keyboard.KeyCode.from_char('s'), 
 }
 ESC_KEY = 27 
 
@@ -92,19 +92,24 @@ def getMask(img):
 
         if((red_mass > LOWER_MASS) and (cyan_mass > LOWER_MASS)):
             if(angle > 12):
-                print("Press: ", KEYS['A'])
-                keyboard.press(KEYS['A'])
-                keyboard.release(KEYS['A'])
+                print("Press: ", keys['A'])
+                keyboard.release(keys['D'])
+                keyboard.press(keys['A'])
+                keyboard.release(keys['A'])
             elif(angle < -12):
-                print("Press: ", KEYS['D'])
-                keyboard.press(KEYS['D'])
-                keyboard.release(KEYS['D'])
+                print("Press: ", keys['D'])
+                keyboard.release(keys['A'])
+                keyboard.press(keys['D'])
+                keyboard.release(keys['D'])
             if((red_mass > HIGHER_MASS) and (cyan_mass > HIGHER_MASS)):
-                keyboard.press(KEYS['W'])
-                keyboard.release(KEYS['S'])
+                keyboard.press(keys['W'])
+                keyboard.release(keys['S'])
             if((red_mass > LOWER_MASS and red_mass < MID_MASS) and (cyan_mass > LOWER_MASS and cyan_mass < MID_MASS)):
-                keyboard.press(KEYS['S'])
-                keyboard.release(KEYS['W'])
+                keyboard.press(keys['S'])
+                keyboard.release(keys['W'])
+        else:
+            for key in keys:
+                keyboard.release(key)
 
     return mask_rgb
 
@@ -159,7 +164,7 @@ def getAngle(img, point1, point2):
 
 # Webcam Initializer
 def main():
-    cv2.namedWindow("Preview")
+    cv2.namedWindow("Color Mask")
 
     # Define webcam input
     
